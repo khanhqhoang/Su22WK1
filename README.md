@@ -30,7 +30,7 @@ Tests:       9 failed, 13 passed, 22 total
 
 ### Your task
 
-As you can see, there is a simple set of unit tests for this project's routes. However, the routes have not been fully implemented yet. Your task is to implement the route definitions and DAO functions required to get all the tests to pass. To get full credit for this assignment, you all tests must pass without any changes. 
+As you can see, there is a simple set of unit tests for this project's routes. However, the routes have not been fully implemented yet. Your task is to implement the route definitions and DAO functions required to get all the tests to pass. To get full credit for this assignment, all the tests must pass without any changes. 
 
 ### Grading
 
