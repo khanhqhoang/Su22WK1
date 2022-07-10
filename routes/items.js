@@ -23,8 +23,15 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
-  itemData.create(req.body);
-  res.sendStatus(200);
+  if(req.body.field){
+    itemData.create(req.body);
+    res.sendStatus(200);
+  }
+  else
+  {
+    res.status(300).send({ Error: 'Field value can not be blank!' });
+  }
+ 
 });
 
 router.put("/:id", (req, res, next) => {
@@ -32,16 +39,24 @@ router.put("/:id", (req, res, next) => {
   const searchedItem = itemData.getById(req.params.id);
   if (searchedItem)
   {
-    res.json(itemData.updateById(req.params.id, req.body));
+    
+    console.log(req.body.field);
+    if (!req.body.field){
+      
+      res.status(300).send({ Error: 'Field value can not be blank!' });
+    }
+    else
+    {
+      const updated = itemData.updateById(req.params.id, req.body)
+      res.json(updated);
+    }
+    
   }
   else
   {
     res.status(200).send({ Text: 'Item not found!' });
   }
 });
-
-
-
 
 router.delete("/:id", (req, res, next) => {
   // TODO: complete writing this route handler
@@ -51,12 +66,12 @@ router.delete("/:id", (req, res, next) => {
     const deleted = itemData.deleteById(item.id)
     if (deleted)
     {
-      //res.status(200).send({ text: 'Item has been deleted successfully!' });
+      
       res.json(deleted);
     }
   }
   else
-    res.status(301).send({ error: 'Item was not deleted!' });
+    res.status(301).send({ error: 'Item was not found therefore not deleted!' });
 });
 
 module.exports = router;
