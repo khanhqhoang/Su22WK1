@@ -6,7 +6,7 @@ const server = require("../server");
 describe("/items", () => {
   let items;
   beforeEach(() => {
-    items = [{ id: 'test1', field: 'val' }, { id: 'test2', field: 'val2' }];
+    items = [{ id: 'test1', field: 'val1' }, { id: 'test2', field: 'val2' }];
     itemData.items = [...items];
   });
 
@@ -37,6 +37,8 @@ describe("/items", () => {
       expect(res.statusCode).toEqual(200);
       expect(itemData.items.length).toEqual(3);
       expect(itemData.items[2]).toMatchObject(item);
+      //check to ensure the field value is not blank when adding new item
+      expect(itemData.items[2].field.length) > 0;
       expect(typeof itemData.items[2].id).toEqual('string');
       expect(itemData.items[2].id).toHaveLength(36);
     });
@@ -46,6 +48,8 @@ describe("/items", () => {
     it("should update an item but not change its id", async () => {
       const item = { field: 'updated', id: 'new' };
       const res = await request(server).put("/items/test1").send(item);
+      //check to ensure the field value is not blank when adding new item
+      expect(item.field.length) > 0;
       expect(res.statusCode).toEqual(200);
       expect(itemData.items.length).toEqual(2);
       expect(itemData.items[0]).toEqual({ id: 'test1', field: 'updated' });
@@ -54,6 +58,8 @@ describe("/items", () => {
     it("should update a different item but not change its id", async () => {
       const item = { field: 'Updated', id: 'new2' };
       const res = await request(server).put("/items/test2").send(item);
+      //check to ensure the field value is not blank when adding new item
+      expect(item.field.length) > 0;
       expect(res.statusCode).toEqual(200);
       expect(itemData.items.length).toEqual(2);
       expect(itemData.items[1]).toEqual({ id: 'test2', field: 'Updated' });
