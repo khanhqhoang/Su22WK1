@@ -12,7 +12,7 @@ At the end of this week, a student should:
 
 ## The assignment
 
-The assignment this week is designed to get you comfortable working in an Express server. It is meant to get you aquainted with a project of the type we will be working in during this course. It contains a simple set of REST endpoints for a generic data type (`items`). You will complete the code for this REST API to meet the requirements as defined in the test suite.
+The assignment this week is designed to get you comfortable working in an Express server. It is meant to get you aquainted with a project of the type we will be working in during this course. It contains a simple set of REST endpoints for a generic data type (`movies`). You will complete the code for this REST API to meet the requirements as defined in the test suite.
 
 ### Getting started
 
@@ -30,11 +30,11 @@ Tests:       7 failed, 2 passed, 9 total
 
 This API has five routes:
 ```
-GET /items
-GET /items/:id
-POST /items
-PUT /items/:id
-DELTE /items/:id
+GET /movies
+GET /movies/:id
+POST /movies
+PUT /movies/:id
+DELTE /movies/:id
 ```
 
 Express documentation: http://expressjs.com
@@ -45,7 +45,7 @@ Jest documentation: https://jestjs.io/
 
 ### Your task
 
-As you can see, there is a simple set of unit tests (routes/items.test.js) for this project's routes. However, the routes have not been fully implemented yet. Your task is to implement the route definitions (in routes/items.js) and data interface functions (in dataInterface/items.js) necessary to get all the tests to pass.  The tests define the requirements, read the test file thoroughly. To get full credit for this assignment, all the tests must pass without any changes to routes/items.test.js.
+As you can see, there is a simple set of unit tests (routes/movies.test.js) for this project's routes. However, the routes have not been fully implemented yet. Your task is to implement the route definitions (in routes/movies.js) and data interface functions (in dataInterface/movies.js) necessary to get all the tests to pass.  The tests define the requirements, read the test file thoroughly. To get full credit for this assignment, all the tests must pass without any changes to routes/movies.test.js.
 
 ### Grading
 
@@ -59,7 +59,7 @@ Newly written code is sensible | 15
 
 Extra credit:
 
-For 10 extra points, add a new test to items.test.js. It may be for an existing piece of API functionality or something that requires additional code in the data interface or routes files. Ideas: What happens when a delete request is made with an invalid id parameter? What happens when a post or put request is made with no data in the "field" parameter?
+For 10 extra points, add a new test to movies.test.js. It may be for an existing piece of API functionality or something that requires additional code in the data interface or routes files. Ideas: What happens when a delete request is made with an invalid id parameter? What happens when a post or put request is made with no data in the "field" parameter?
 
 ### Submission
 

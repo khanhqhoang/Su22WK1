@@ -1,16 +1,16 @@
 const { Router } = require("express");
 const router = Router();
 
-const itemData = require('../dataInterface/items');
+const movieData = require('../dataInterface/movies');
 
 router.get("/", (req, res, next) => {
-  res.status(200).send(itemData.getAll())
+  res.status(200).send(movieData.getAll())
 });
 
 router.get("/:id", (req, res, next) => {
   // TODO: complete writing this route handler
 
-  const searchedItem = itemData.getById(req.params.id);
+  const searchedItem = movieData.getById(req.params.id);
   if (searchedItem)
   {
     res.json(searchedItem);
@@ -24,7 +24,7 @@ router.get("/:id", (req, res, next) => {
 
 router.post("/", (req, res, next) => {
   if(req.body.field){
-    itemData.create(req.body);
+    movieData.create(req.body);
     res.sendStatus(200);
   }
   else
@@ -36,7 +36,7 @@ router.post("/", (req, res, next) => {
 
 router.put("/:id", (req, res, next) => {
   // TODO: complete writing this route handler
-  const searchedItem = itemData.getById(req.params.id);
+  const searchedItem = movieData.getById(req.params.id);
   if (searchedItem)
   {
     
@@ -47,7 +47,7 @@ router.put("/:id", (req, res, next) => {
     }
     else
     {
-      const updated = itemData.updateById(req.params.id, req.body)
+      const updated = movieData.updateById(req.params.id, req.body)
       res.json(updated);
     }
     
@@ -60,10 +60,10 @@ router.put("/:id", (req, res, next) => {
 
 router.delete("/:id", (req, res, next) => {
   // TODO: complete writing this route handler
-  const item = itemData.getById(req.params.id);
+  const item = movieData.getById(req.params.id);
   if (item)
   {
-    const deleted = itemData.deleteById(item.id)
+    const deleted = movieData.deleteById(item.id)
     if (deleted)
     {
       
